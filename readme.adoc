@@ -1,6 +1,8 @@
 
 = spring-cloud
 
+image::image-2022-05-04-11-06-53-515.png[]
+
 1. 创建服务注册中心
 
     Eureka
