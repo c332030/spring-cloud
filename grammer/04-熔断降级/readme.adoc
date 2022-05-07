@@ -1,0 +1,39 @@
+
+= 04-熔断降级
+
+== Hystrix
+
+雪崩
+
+image::image-2022-05-07-23-11-34-584.png[]
+
+熔断：当指定时间窗内的请求失败率达到设定阈值时，系统将通过 断路器 直接将此请求链路断开。
+
+断路器模式
+
+[source,java]
+----
+@HystrixCommand(
+    commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1200")}
+)
+public List<Xxx> getXxxx() {
+    // ...省略代码逻辑
+}
+----
+
+降级
+
+[source,java]
+----
+// 指定了后备方法调用
+@HystrixCommand(fallbackMethod = "getHystrixNews")
+@GetMapping("/get/news")
+public News getNews(@PathVariable("id") int id) {
+    // 调用新闻系统的获取新闻api 代码逻辑省略
+}
+
+public News getHystrixNews(@PathVariable("id") int id) {
+    // 做服务降级
+    // 返回当前人数太多，请稍后查看
+}
+----

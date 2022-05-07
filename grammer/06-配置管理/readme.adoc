@@ -1,0 +1,6 @@
+
+= 06-配置管理
+
+== Spring Cloud Config
+
+使用 Bus 消息总线 + Spring Cloud Config 进行配置的动态刷新

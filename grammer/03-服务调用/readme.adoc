@@ -1,0 +1,37 @@
+
+= 03-服务调用
+
+== RestTemplate
+
+== OpenFeign
+
+消费端使用
+
+[source,java]
+----
+@FeignClient(value = "eureka-client-provider")
+public interface TestClient {
+
+    // 这里一定要注意需要使用的是提供者那端的请求相对路径，这里就相当于映射了
+    @RequestMapping(value = "/provider/xxx", method = RequestMethod.POST)
+    CommonResponse<List<Plan>> getPlans(@RequestBody planGetRequestrequest);
+
+}
+----
+
+[source,java]
+----
+@RestController
+public class TestController {
+
+    // 这里就相当于原来自动注入的 Service
+    @Autowired
+    private TestClient testClient;
+
+    // controller 调用 service 层代码
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public CommonResponse<List<Plan>> get(@RequestBody planGetRequest request) {
+        return testClient.getPlans(request);
+    }
+}
+----
