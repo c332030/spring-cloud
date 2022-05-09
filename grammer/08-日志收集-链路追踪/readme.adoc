@@ -1,0 +1,20 @@
+
+= 08-日志收集-链路追踪
+
+== EFK 日志收集系统
+
+EFK是指 Elasticsearch、Filebeat、和 Kibana，原本还有个 logstash，但是 logstash 的使用没有 filebeat 简单，并且它的内容过滤功能并不是刚需，所以就不加上了，但是后面仍然会附带 logstash 的简要介绍。
+
+- Elasticsearch：存储
+- Filebeat / logstash：监测变化，存入 Elasticsearch
+- kibana 可视化查询
+
+== Spring Cloud Sleuth + Zipkin
+
+=== Spring Cloud Sleuth
+
+一个Spring Cloud库，通过在HTTP请求头文件上添加trace和span id，可以跟踪后续微服务的进度。该库基于MDC(映射诊断上下文)概念，可以轻松提取放入上下文中的值并将它们显示在日志中。
+
+=== Zipkin
+
+基于java的分布式跟踪应用程序，帮助收集独立服务之间传播的每个请求的时间数据。它有一个简单的管理控制台，我们可以在其中看到后续服务生成的时间统计信息的可视化。
