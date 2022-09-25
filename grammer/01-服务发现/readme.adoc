@@ -1,7 +1,11 @@
 
 = 01-服务发现
 
-== Eureka
+== Nacos AP
+
+完全去中心化
+
+== Eureka AP
 
 提供
 
@@ -18,6 +22,6 @@
 
 `Eureka` 框架中的 注册、续约 等，底层都是使用的 `RestTemplate`
 
-== Zookeeper
+== Zookeeper CP
 
 == Consul
