@@ -1,0 +1,17 @@
+
+= 与 dubbo
+
+区别
+
+spring cloud
+
+. spring 开源
+. spring cloud 只是提供了一种设计思路，很多组件都是第三方提供的，比如：Eureka，所以才有 spring cloud alibaba
+. rest api 调用，通过 RestTemplate，更灵活，方便从非微服务架构迁移
+.
+
+dubbo
+
+. 阿里巴巴开源的微服务框架
+. RPC 调用，像调用本地方法一样调用远程服务，服务提供方和调用方式之间依赖太强，每个服务都需要定义一个接口，需要严格保证版本一致
+. 社区活跃度更高
