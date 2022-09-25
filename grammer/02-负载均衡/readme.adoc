@@ -5,6 +5,8 @@
 
 客户端/进程内负载均衡器，运行在消费者端。
 
+使用 @LoadBalanced 注解 RestTemplate 实现服务名访问：`restTemplate.getForObject("http://service-hi/hi?name="+name, String.class);`
+
 === Nginx 和 Ribbon 的对比
 
 nginx 是集中式的负载均衡器。简单理解就是 将所有请求都集中起来，然后再进行负载均衡。
