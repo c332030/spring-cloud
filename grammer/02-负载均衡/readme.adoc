@@ -1,7 +1,19 @@
 
 = 02-负载均衡
 
+策略：
+
+. 轮询
+. 随机
+. 加权
+
 == Ribbon
+
+=== 使用
+
+. 使用 Feign，Feign 内部已经整合了 Ribbon，因此如果只是普通使用的话都感知不到Ribbon 的存在
+
+. 配合RestTemplate使用，这种方式则需要添加 Ribbon 依赖和 @LoadBalanced 注解
 
 客户端/进程内负载均衡器，运行在消费者端。
 
@@ -22,3 +34,7 @@ Ribbon：
 . RoundRobinRule：轮询策略。Ribbon 默认采用的策略。若经过一轮轮询没有找到可用的 provider，其最多轮询 10 轮。若最终还没有找到，则返回 null。
 . RandomRule: 随机策略，从所有可用的 provider 中随机选择一个。
 . RetryRule: 重试策略。先按照 RoundRobinRule 策略获取 provider，若获取失败，则在指定的时限内重试。默认的时限为 500 毫秒。
+
+Ribbon负载均衡策略，默认的策略规则为 ZoneAvoidanceRule（类似于轮询）
+
+image:Ribbon负载均衡策略.webp[]
